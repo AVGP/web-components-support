@@ -22,13 +22,28 @@
       .nope {
         color: red;
       }
+
+      .warning {
+        background-color: #faa;
+        color: #800;
+        padding: 1em;
+        border: thin solid #800;
+        border-radius: 3px;
+      }
     </style>
   </head>
   <body>
   <h1>Web component test</h1>
   <section>
+    <article class="warning">
+      <h2>Warning!</h2>
+      <p>The technologies tested herein are <strong>experimental</strong>.</p>
+      <p>The test results may be incorrect, misleading, use this site at your risk!</p>
+    </article>
+
     <article>
     <h2>What is tested</h2>
+      <p>Last revision: Jan 23, 2014</p>
       <p>This page tries to test for support of the following web standard proposals related to web components:</p>
       <ol>
         <li>Template element</li>
