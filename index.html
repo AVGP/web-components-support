@@ -112,7 +112,7 @@
     
     //Template test
     var templateResult = document.getElementById("templates");
-    if(document.getElementById("t") instanceof HTMLTemplateElement && document.getElementById("t").content) {
+    if(HTMLTemplateElement && document.getElementById("t") instanceof HTMLTemplateElement && document.getElementById("t").content) {
       templateResult.textContent = "Supported";
       templateResult.classList.add("yay");
       Keen.addEvent("TemplateSupport", window.navigator);
