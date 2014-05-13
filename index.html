@@ -52,12 +52,13 @@
 
     <article>
     <h2>What is tested</h2>
-      <p>Last revision: Jan 23, 2014</p>
+      <p>Last revision: May 13, 2014</p>
       <p>This page tries to test for support of the following web standard proposals related to web components:</p>
       <ol>
         <li>Template element</li>
         <li>Shadow DOM</li>
         <li>Custom elements</li>
+        <li>HTML Imports</li>
       </ol>
     </article>
     
@@ -76,13 +77,15 @@
             <th>Templates</th>
             <th>Shadow DOM</th>
             <th>Custom Elements</th>
+            <th>HTML Imports</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td id="templates">Loading...</td>
-            <td id="shadow">Loading...</td>
-            <td id="elements">Loading...</td>
+            <td id="shadow">   Loading...</td>
+            <td id="elements"> Loading...</td>
+            <td id="imports">  Loading...</td>
           </tr>
         </tbody>
       </table>
@@ -147,6 +150,16 @@
       Keen.addEvent("CustomElementsNoSupport", window.navigator);
     }
     
+    
+    // HTML Imports
+    var importsResult = document.getElementById("imports");
+    if('import' in document.createElement('link')) {
+      elemResult.textContent = "Support";
+      elemResult.classList.add("yay");
+    } else {
+      elemResult.textContent = "Not supported";
+      elemResult.classList.add("nope");
+    }
   </script>
   
   </body>
