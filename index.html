@@ -154,11 +154,11 @@
     // HTML Imports
     var importsResult = document.getElementById("imports");
     if('import' in document.createElement('link')) {
-      elemResult.textContent = "Support";
-      elemResult.classList.add("yay");
+      importsResult.textContent = "Support";
+      importsResult.classList.add("yay");
     } else {
-      elemResult.textContent = "Not supported";
-      elemResult.classList.add("nope");
+      importsResult.textContent = "Not supported";
+      importsResult.classList.add("nope");
     }
   </script>
   
