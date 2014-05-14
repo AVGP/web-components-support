@@ -102,15 +102,15 @@
     if(document.body.createShadowRoot) {
       shadowResult.textContent = "Supported";
       shadowResult.classList.add("yay");
-      ga('send', 'event', 'Support', 'Shadow DOM', 'Shadow DOM', 'supported', {'nonInteraction': 1});
+      ga('set', 'dimension1', 'supported');
     } else if(document.body.webkitCreateShadowRoot) {
       shadowResult.textContent = "Prefixed";
       shadowResult.classList.add("meh");
-      ga('send', 'event', 'Support', 'Shadow DOM', 'Shadow DOM', 'prefixed', {'nonInteraction': 1});
+      ga('set', 'dimension1', 'prefixed');
     } else {
       shadowResult.textContent = "Not supported";
       shadowResult.classList.add("nope");
-      ga('send', 'event', 'Support', 'Shadow DOM', 'Shadow DOM', 'not supported', {'nonInteraction': 1});
+      ga('set', 'dimension1', 'not supported');
     }
     
     
@@ -119,11 +119,11 @@
     if(window.HTMLTemplateElement && document.getElementById("t") instanceof HTMLTemplateElement && document.getElementById("t").content) {
       templateResult.textContent = "Supported";
       templateResult.classList.add("yay");
-      ga('send', 'event', 'Support', 'Template', 'Template', 'supported', {'nonInteraction': 1});      
+      ga('set', 'dimension2', 'supported');
     } else {
       templateResult.textContent = "Not supported";
       templateResult.classList.add("nope");
-      ga('send', 'event', 'Support', 'Template', 'Template', 'not supported', {'nonInteraction': 1});      
+      ga('set', 'dimension2', 'not supported');
     }
     
     
@@ -138,18 +138,18 @@
         elemResult.textContent = "Supported";
         elemResult.classList.add("yay");
         elemResult.classList.remove("meh");
-        ga('send', 'event', 'Support', 'Custom Element', 'Custom Element', 'supported', {'nonInteraction': 1});      
+        ga('set', 'dimension3', 'supported');
       };
       
       var XFoo = document.registerElement("x-foo", {prototype: proto});
     } else if(document.webkitRegisterElement) {
       elemResult.textContent = "Partial";
       elemResult.classList.add("meh");
-      ga('send', 'event', 'Support', 'Custom Element', 'Custom Element', 'prefixed', {'nonInteraction': 1});      
+      ga('set', 'dimension3', 'prefixed');
     } else {
       elemResult.textContent = "Not supported";
       elemResult.classList.add("nope");
-      ga('send', 'event', 'Support', 'Custom Element', 'Custom Element', 'not supported', {'nonInteraction': 1});      
+      ga('set', 'dimension3', 'not supported');
     }
     
     
@@ -158,11 +158,11 @@
     if('import' in document.createElement('link')) {
       importsResult.textContent = "Support";
       importsResult.classList.add("yay");
-      ga('send', 'event', 'Support', 'Imports', 'Imports', 'supported', {'nonInteraction': 1});
+      ga('set', 'dimension4', 'supported');
     } else {
       importsResult.textContent = "Not supported";
       importsResult.classList.add("nope");
-      ga('send', 'event', 'Support', 'Imports', 'Imports', 'not supported', {'nonInteraction': 1});
+      ga('set', 'dimension4', 'not supported');
     }
   </script>
   
