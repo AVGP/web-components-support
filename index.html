@@ -101,15 +101,15 @@
     if(document.body.createShadowRoot) {
       shadowResult.textContent = "Supported";
       shadowResult.classList.add("yay");
-      Keen.addEvent("ShadowDOMSupport", window.navigator);
+      Keen.addEvent("ShadowDOM", {status: "supported", browser: window.navigator});
     } else if(document.body.webkitCreateShadowRoot) {
       shadowResult.textContent = "Prefixed";
       shadowResult.classList.add("meh");
-      Keen.addEvent("ShadowDOMPrefixedSupport", window.navigator);
+      Keen.addEvent("ShadowDOM", {status: "prefixed", browser: window.navigator});
     } else {
       shadowResult.textContent = "Not supported";
       shadowResult.classList.add("nope");
-      Keen.addEvent("ShadowDOMNoSupport", window.navigator);
+      Keen.addEvent("ShadowDOM", {status: "not supported", browser: window.navigator});
     }
     
     
@@ -118,11 +118,11 @@
     if(window.HTMLTemplateElement && document.getElementById("t") instanceof HTMLTemplateElement && document.getElementById("t").content) {
       templateResult.textContent = "Supported";
       templateResult.classList.add("yay");
-      Keen.addEvent("TemplateSupport", window.navigator);
+      Keen.addEvent("Template", {status: "supported", browser: window.navigator});
     } else {
       templateResult.textContent = "Not supported";
       templateResult.classList.add("nope");
-      Keen.addEvent("TemplateNoSupport", window.navigator);
+      Keen.addEvent("Template", {status: "not supported", browser: window.navigator});
     }
     
     
@@ -131,23 +131,24 @@
     if(document.registerElement) {
       elemResult.textContent = "Partial";
       elemResult.classList.add("meh");
-     Keen.addEvent("CustomElementsSupport", window.navigator);
       
       var proto = Object.create(HTMLElement.prototype);
       proto.attachedCallback = function() {
         elemResult.textContent = "Supported";
         elemResult.classList.add("yay");
         elemResult.classList.remove("meh");
+        Keen.addEvent("CustomElements", {status: "supported", browser: window.navigator});
       };
       
       var XFoo = document.registerElement("x-foo", {prototype: proto});
     } else if(document.webkitRegisterElement) {
       elemResult.textContent = "Partial";
       elemResult.classList.add("meh");
+      Keen.addEvent("CustomElements", {status: "prefixed", browser: window.navigator});
     } else {
       elemResult.textContent = "Not supported";
       elemResult.classList.add("nope");
-      Keen.addEvent("CustomElementsNoSupport", window.navigator);
+      Keen.addEvent("CustomElements", {status: "not supported", browser: window.navigator});
     }
     
     
@@ -156,9 +157,11 @@
     if('import' in document.createElement('link')) {
       importsResult.textContent = "Support";
       importsResult.classList.add("yay");
+      Keen.addEvent("Imports", {status: "supported", browser: window.navigator});
     } else {
       importsResult.textContent = "Not supported";
       importsResult.classList.add("nope");
+      Keen.addEvent("Imports", {status: "not supported", browser: window.navigator});      
     }
   </script>
   
