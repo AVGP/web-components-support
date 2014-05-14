@@ -102,15 +102,15 @@
     if(document.body.createShadowRoot) {
       shadowResult.textContent = "Supported";
       shadowResult.classList.add("yay");
-      keen.addEvent("ShadowDOM", {status: "supported", browser: window.navigator});
+      ga('send', 'event', 'Support', 'Shadow DOM', 'Shadow DOM', 'supported', {'nonInteraction': 1});
     } else if(document.body.webkitCreateShadowRoot) {
       shadowResult.textContent = "Prefixed";
       shadowResult.classList.add("meh");
-      keen.addEvent("ShadowDOM", {status: "prefixed", browser: window.navigator});
+      ga('send', 'event', 'Support', 'Shadow DOM', 'Shadow DOM', 'prefixed', {'nonInteraction': 1});
     } else {
       shadowResult.textContent = "Not supported";
       shadowResult.classList.add("nope");
-      keen.addEvent("ShadowDOM", {status: "not supported", browser: window.navigator});
+      ga('send', 'event', 'Support', 'Shadow DOM', 'Shadow DOM', 'not supported', {'nonInteraction': 1});
     }
     
     
