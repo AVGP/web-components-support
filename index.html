@@ -31,14 +31,16 @@
         border-radius: 3px;
       }
     </style>
-    <script src="https://d26b395fwzu5fz.cloudfront.net/3.0.0/keen.min.js"></script>
-    
-    <script type="text/javascript">
-    var keen = new Keen({
-        projectId: "52e0d46b73f4bb4cb8000000",
-        writeKey: "5312044ade8e9b04773ff2c0e676ac2dadfb59a1a962e24ad76a8c67c50e3c8d36c13246e59ffde17fb9c95caf55d6489a99db2a550f6c525a46b3e2b6389acab99c2e472225d4efcfd6abeb769966ab7b64b6eccf06d5b04c46c39f9551896b2c38e2412f1517cc18394da9ebb3c996"
-    });
-</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-37093471-4', 'avgp.github.io');
+  ga('send', 'pageview');
+</script>    
   </head>
   <body>
   <h1>Web component test</h1>
@@ -117,11 +119,11 @@
     if(window.HTMLTemplateElement && document.getElementById("t") instanceof HTMLTemplateElement && document.getElementById("t").content) {
       templateResult.textContent = "Supported";
       templateResult.classList.add("yay");
-      keen.addEvent("Template", {status: "supported", browser: window.navigator});
+      ga('send', 'event', 'Support', 'Template', 'Template', 'supported', {'nonInteraction': 1});      
     } else {
       templateResult.textContent = "Not supported";
       templateResult.classList.add("nope");
-      keen.addEvent("Template", {status: "not supported", browser: window.navigator});
+      ga('send', 'event', 'Support', 'Template', 'Template', 'not supported', {'nonInteraction': 1});      
     }
     
     
@@ -136,18 +138,18 @@
         elemResult.textContent = "Supported";
         elemResult.classList.add("yay");
         elemResult.classList.remove("meh");
-        keen.addEvent("CustomElements", {status: "supported", browser: window.navigator});
+        ga('send', 'event', 'Support', 'Custom Element', 'Custom Element', 'supported', {'nonInteraction': 1});      
       };
       
       var XFoo = document.registerElement("x-foo", {prototype: proto});
     } else if(document.webkitRegisterElement) {
       elemResult.textContent = "Partial";
       elemResult.classList.add("meh");
-      keen.addEvent("CustomElements", {status: "prefixed", browser: window.navigator});
+      ga('send', 'event', 'Support', 'Custom Element', 'Custom Element', 'prefixed', {'nonInteraction': 1});      
     } else {
       elemResult.textContent = "Not supported";
       elemResult.classList.add("nope");
-      keen.addEvent("CustomElements", {status: "not supported", browser: window.navigator});
+      ga('send', 'event', 'Support', 'Custom Element', 'Custom Element', 'not supported', {'nonInteraction': 1});      
     }
     
     
@@ -156,11 +158,11 @@
     if('import' in document.createElement('link')) {
       importsResult.textContent = "Support";
       importsResult.classList.add("yay");
-      keen.addEvent("Imports", {status: "supported", browser: window.navigator});
+      ga('send', 'event', 'Support', 'Imports', 'Imports', 'supported', {'nonInteraction': 1});
     } else {
       importsResult.textContent = "Not supported";
       importsResult.classList.add("nope");
-      keen.addEvent("Imports", {status: "not supported", browser: window.navigator});      
+      ga('send', 'event', 'Support', 'Imports', 'Imports', 'not supported', {'nonInteraction': 1});
     }
   </script>
   
