@@ -31,11 +31,10 @@
         border-radius: 3px;
       }
     </style>
-
+    <script src="https://d26b395fwzu5fz.cloudfront.net/3.0.0/keen.min.js"></script>
+    
     <script type="text/javascript">
-    var Keen=Keen||{configure:function(e){this._cf=e},addEvent:function(e,t,n,i){this._eq=this._eq||[],this._eq.push([e,t,n,i])},setGlobalProperties:function(e){this._gp=e},onChartsReady:function(e){this._ocrq=this._ocrq||[],this._ocrq.push(e)}};(function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src=("https:"==document.location.protocol?"https://":"http://")+"dc8na2hxrj29i.cloudfront.net/code/keen-2.1.0-min.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
-
-    Keen.configure({
+    var keen = new Keen({
         projectId: "52e0d46b73f4bb4cb8000000",
         writeKey: "5312044ade8e9b04773ff2c0e676ac2dadfb59a1a962e24ad76a8c67c50e3c8d36c13246e59ffde17fb9c95caf55d6489a99db2a550f6c525a46b3e2b6389acab99c2e472225d4efcfd6abeb769966ab7b64b6eccf06d5b04c46c39f9551896b2c38e2412f1517cc18394da9ebb3c996"
     });
@@ -101,15 +100,15 @@
     if(document.body.createShadowRoot) {
       shadowResult.textContent = "Supported";
       shadowResult.classList.add("yay");
-      Keen.addEvent("ShadowDOM", {status: "supported", browser: window.navigator});
+      keen.addEvent("ShadowDOM", {status: "supported", browser: window.navigator});
     } else if(document.body.webkitCreateShadowRoot) {
       shadowResult.textContent = "Prefixed";
       shadowResult.classList.add("meh");
-      Keen.addEvent("ShadowDOM", {status: "prefixed", browser: window.navigator});
+      keen.addEvent("ShadowDOM", {status: "prefixed", browser: window.navigator});
     } else {
       shadowResult.textContent = "Not supported";
       shadowResult.classList.add("nope");
-      Keen.addEvent("ShadowDOM", {status: "not supported", browser: window.navigator});
+      keen.addEvent("ShadowDOM", {status: "not supported", browser: window.navigator});
     }
     
     
@@ -118,11 +117,11 @@
     if(window.HTMLTemplateElement && document.getElementById("t") instanceof HTMLTemplateElement && document.getElementById("t").content) {
       templateResult.textContent = "Supported";
       templateResult.classList.add("yay");
-      Keen.addEvent("Template", {status: "supported", browser: window.navigator});
+      keen.addEvent("Template", {status: "supported", browser: window.navigator});
     } else {
       templateResult.textContent = "Not supported";
       templateResult.classList.add("nope");
-      Keen.addEvent("Template", {status: "not supported", browser: window.navigator});
+      keen.addEvent("Template", {status: "not supported", browser: window.navigator});
     }
     
     
@@ -137,18 +136,18 @@
         elemResult.textContent = "Supported";
         elemResult.classList.add("yay");
         elemResult.classList.remove("meh");
-        Keen.addEvent("CustomElements", {status: "supported", browser: window.navigator});
+        keen.addEvent("CustomElements", {status: "supported", browser: window.navigator});
       };
       
       var XFoo = document.registerElement("x-foo", {prototype: proto});
     } else if(document.webkitRegisterElement) {
       elemResult.textContent = "Partial";
       elemResult.classList.add("meh");
-      Keen.addEvent("CustomElements", {status: "prefixed", browser: window.navigator});
+      keen.addEvent("CustomElements", {status: "prefixed", browser: window.navigator});
     } else {
       elemResult.textContent = "Not supported";
       elemResult.classList.add("nope");
-      Keen.addEvent("CustomElements", {status: "not supported", browser: window.navigator});
+      keen.addEvent("CustomElements", {status: "not supported", browser: window.navigator});
     }
     
     
@@ -157,11 +156,11 @@
     if('import' in document.createElement('link')) {
       importsResult.textContent = "Support";
       importsResult.classList.add("yay");
-      Keen.addEvent("Imports", {status: "supported", browser: window.navigator});
+      keen.addEvent("Imports", {status: "supported", browser: window.navigator});
     } else {
       importsResult.textContent = "Not supported";
       importsResult.classList.add("nope");
-      Keen.addEvent("Imports", {status: "not supported", browser: window.navigator});      
+      keen.addEvent("Imports", {status: "not supported", browser: window.navigator});      
     }
   </script>
   
