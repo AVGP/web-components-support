@@ -103,10 +103,40 @@
     </article>
   </section>
   
+  <section>
+    <article>
+      <h2>Stats</h2>
+
+      <h3>Template support</h3>
+      <div id="templates_chart"></div>
+
+      <h3>Shadow DOM support</h3>
+      <div id="shadowdom_chart"></div>
+
+      <h3>Custom Elements support</h3>
+      <div id="customelements_chart"></div>
+
+      <h3>HTML Imports support</h3>
+      <div id="imports_chart"></div>
+    </article>
+  </section>
+  
   <template id="t"></template>
   <x-foo></x-foo>
   
   <script>
+  
+    Keen.onChartsReady(function(){
+      var collections = ["Templates", "ShadowDom", "CustomElements", "Imports"];
+      for(var i=0; i<collections.length;i++) {
+        var metric = new Keen.Metric(collections[i], {
+          analysisType: "count",
+          groupBy: "state"
+        });
+        metric.draw(document.getElementById(collections[i].toLowerCase() + "_chart"));
+      }
+    });
+  
     //Shadow DOM test
     var shadowResult = document.getElementById("shadow");
     if(document.body.createShadowRoot) {
@@ -115,7 +145,7 @@
       ga('set', 'dimension1', 'supported');
       Keen.addEvent("ShadowDom", {
         state: "supported",
-        ua:       window.navigator.useragent,
+        ua:       window.navigator.userAgent,
         vendor:   window.navigator.vendor,
         platform: window.navigator.platform
       });
@@ -125,7 +155,7 @@
       ga('set', 'dimension1', 'prefixed');
       Keen.addEvent("ShadowDom", {
         state: "prefixed",
-        ua:       window.navigator.useragent,
+        ua:       window.navigator.userAgent,
         vendor:   window.navigator.vendor,
         platform: window.navigator.platform
       });
@@ -135,7 +165,7 @@
       ga('set', 'dimension1', 'not supported');
       Keen.addEvent("ShadowDom", {
         state: "not supported",
-        ua:       window.navigator.useragent,
+        ua:       window.navigator.userAgent,
         vendor:   window.navigator.vendor,
         platform: window.navigator.platform        
       });
@@ -150,7 +180,7 @@
       ga('set', 'dimension2', 'supported');
       Keen.addEvent("Templates", {
         state: "supported", 
-        ua:       window.navigator.useragent,
+        ua:       window.navigator.userAgent,
         vendor:   window.navigator.vendor,
         platform: window.navigator.platform        
       });
@@ -160,7 +190,7 @@
       ga('set', 'dimension2', 'not supported');
       Keen.addEvent("Templates", {
         state: "not supported",
-        ua:       window.navigator.useragent,
+        ua:       window.navigator.userAgent,
         vendor:   window.navigator.vendor,
         platform: window.navigator.platform        
       });
@@ -181,7 +211,7 @@
         ga('set', 'dimension3', 'supported');
         Keen.addEvent("CustomElements", {
           state: "supported",
-          ua:       window.navigator.useragent,
+          ua:       window.navigator.userAgent,
           vendor:   window.navigator.vendor,
           platform: window.navigator.platform
         });
@@ -194,7 +224,7 @@
       ga('set', 'dimension3', 'prefixed');
       Keen.addEvent("CustomElements", {
         state: "prefixed",
-        ua:       window.navigator.useragent,
+        ua:       window.navigator.userAgent,
         vendor:   window.navigator.vendor,
         platform: window.navigator.platform
       });
@@ -204,7 +234,7 @@
       ga('set', 'dimension3', 'not supported');
         Keen.addEvent("CustomElements", {
           state: "not supported",
-          ua:       window.navigator.useragent,
+          ua:       window.navigator.userAgent,
           vendor:   window.navigator.vendor,
           platform: window.navigator.platform
         });
@@ -219,7 +249,7 @@
       ga('set', 'dimension4', 'supported');
       Keen.addEvent("Imports", {
         state: "supported",
-        ua:       window.navigator.useragent,
+        ua:       window.navigator.userAgent,
         vendor:   window.navigator.vendor,
         platform: window.navigator.platform
       });
@@ -229,7 +259,7 @@
       ga('set', 'dimension4', 'not supported');
       Keen.addEvent("Imports", {
         state: "not supported",
-        ua:       window.navigator.useragent,
+        ua:       window.navigator.userAgent,
         vendor:   window.navigator.vendor,
         platform: window.navigator.platform
       });
