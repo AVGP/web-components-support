@@ -11,6 +11,11 @@
         font-weight: bold;
       }
     
+      .chartblock {
+        display: inline-block;
+        width: 49%;
+      }
+    
       .yay {
         color: green;
       }
@@ -64,7 +69,7 @@
 
     <article>
     <h2>What is tested</h2>
-      <p>Last revision: May 13, 2014</p>
+      <p>Last revision: July 25th, 2014</p>
       <p>This page tries to test for support of the following web standard proposals related to web components:</p>
       <ol>
         <li>Template element</li>
@@ -108,17 +113,25 @@
     <article>
       <h2>Stats</h2>
 
-      <h3>Template support</h3>
-      <div id="templates_chart"></div>
+      <div class="chartblock">
+        <h3>Template support</h3>
+        <div id="templates_chart"></div>
+      </div>
 
-      <h3>Shadow DOM support</h3>
-      <div id="shadowdom_chart"></div>
+      <div class="chartblock">
+        <h3>Shadow DOM support</h3>
+        <div id="shadowdom_chart"></div>
+      </div>
 
-      <h3>Custom Elements support</h3>
-      <div id="customelements_chart"></div>
-
-      <h3>HTML Imports support</h3>
-      <div id="imports_chart"></div>
+      <div class="chartblock">
+        <h3>Custom Elements support</h3>
+        <div id="customelements_chart"></div>
+      </div>
+      
+      <div class="chartblock">
+        <h3>HTML Imports support</h3>
+        <div id="imports_chart"></div>
+      </div>
     </article>
   </section>
   
@@ -131,10 +144,11 @@
       var collections = ["Templates", "ShadowDom", "CustomElements", "Imports"];
       for(var i=0; i<collections.length;i++) {
         var metric = new Keen.Metric(collections[i], {
-          analysisType: "count",
+          analysisType: "count_unique",
+          targetProperty: "ua",
           groupBy: "state"
         });
-        metric.draw(document.getElementById(collections[i].toLowerCase() + "_chart"));
+        metric.draw(document.getElementById(collections[i].toLowerCase() + "_chart"), {width: 400});
       }
     });
   
